@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books  Recommender System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    .text-while{
+        color: white;
+        margin-top: 0px;
+    }
+</style>
+<body style="background-color: black;">
+
+    <nav class="navbar" style="background-color: rgb(61, 213, 132);">
+        <a class="navbar-brand">My Books Recommender</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/recommend">Recommender</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-while" style="font-size: 40px;">Recommend</h1>
+                <form action="/recommender_books" method="post">
+                    <input name="user_input" type="text" class="form-control form-control-lg"><br>
+                    <input type="submit" class="btn btn-lg btn-warning">
+                </form>
+            </div>  
+            {% if data %}
+                {% for i in data %}
+                    <div class="col-md-3" style="margin-top: 25px;">
+                        <div class="card" style="background-color: black; list-style: none;">
+                            <div class="card-body">
+                                <img class="card-img-top" src="{{ i[2] }}" alt="" style="height: 180px; width: 120px;">
+                                <h4 class="text-while">{{ i[0] }}</h3>
+                                <p class="text-while" >{{ i[1] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %} 
+            {% endif %}
+            
+            
+        </div>
+    </div>
+</body>
+</html>
